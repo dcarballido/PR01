@@ -17,9 +17,9 @@ THIS PROJECT HAS BEEN MADE BY DIEGO CARBALLIDO, EDGAR GODOY AND RAUL VAZQUEZ. EN
 
 CONTACT LIST:
 
-[DIEGO CARBALLIDO VALLE](https://dcarballido.github.io) diego.carballido@icloud.com 
-EDGAR GODOY MOROTE ----> edgomorote@hotmail.com -----> https://edgaargodoy.github.io
-RAÚL VAZQUEZ PEDRERA ----> raul.vazquez.96@gmail.com ----> https://raulvazpe.github.io
+[DIEGO CARBALLIDO VALLE](https://dcarballido.github.io)
+[EDGAR GODOY MOROTE](https://edgaargodoy.github.io)
+[RAÚL VAZQUEZ PEDRERA](https://raulvazpe.github.io)
 
 
 
