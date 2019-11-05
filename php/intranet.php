@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Página de disponibilidad</title>
-	<link rel="stylesheet" type="text/css" href="\PROYECTOS-DAW2\PR01\front-end\css\pagina.css">
+	<link rel="stylesheet" type="text/css" href="\PROYECTOS-DAW2\PR01\css\pagina.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400i&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
 </head>
