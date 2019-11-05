@@ -1,8 +1,15 @@
+<?php
+
+  // linkeamos db_connection.php para conexión a la base de datos
+  include "./db_connection.php";
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="estilos.css">
-  <script type="text/javascript" src="login.js"></script>
+  <script type="text/javascript" src="../../../front-end/js/login.js"></script>
 
   <title></title>
 
