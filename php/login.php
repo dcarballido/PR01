@@ -13,6 +13,7 @@ include "./db_connection.php";
 <body>
   <div style="text-align: center; margin-top: 5%"><h1>Social Gallery</h1></div>
   <div style="text-align: center; margin-top: 10%;">
+    <!-- formulario de inicio de sesión -->
   <h1>Iniciar sesión</h1>
   <form method="post" action="./19-10-21_projecte_1_social_gallery_m07_login.proc.php" onsubmit="first()">
   <p>Recuerda, este formulario no acepta caracteres especiales!</p>
@@ -31,7 +32,9 @@ include "./db_connection.php";
       echo "";
     }
   ?>
+  <!--  -->
 
+  <!-- formulario de registro -->
   <h1>Registrarse</h1>
   <form method="post" action="./19-10-21_projecte_1_social_gallery_m07_signin.proc.php" onsubmit="second()">
   <p>Recuerda, este formulario no acepta caracteres especiales!</p>
@@ -42,6 +45,8 @@ include "./db_connection.php";
     <input pattern='[A-Za-z0-9_-]{1,15}' type="password" name="password" placeholder="Inserta el nuevo password" required><br/><br/>
     <input pattern='[A-Za-z0-9_-]{1,15}' type="submit" name="Enviar" value="Registrarse" >
   </form>
+  <!--  -->
+
   </div>
 </body>
 </html>
