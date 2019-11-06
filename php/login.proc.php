@@ -21,11 +21,11 @@ if(isset($_REQUEST['user'])){
 		//Voy a la intranet de la app
 		header("Location: ./intranet.php");
 	}else{
-		//Ha fallado la autenticación vuelvo a login.php
-		header("Location: ./login.php?error=1&loginuser=". $user);
+		//Ha fallado la autenticación vuelvo a index.php
+		header("Location: ./index.php?error=1&loginuser=". $user);
 	}
-//Si no está configurada la variable del formulario del login vuelve al login.php
+//Si no está configurada la variable del formulario del login vuelve al index.php
 }else{
-	header("Location: ./login.php");
+	header("Location: ./index.php");
 }	
 ?>

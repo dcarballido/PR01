@@ -30,11 +30,10 @@ if(isset($_REQUEST['user'])){
 		header("Location: ./intranet.php");
 	}else{
 		echo "string2";
-		//Ha fallado la autenticación vuelvo a index.php
-		//header("Location: ./19-10-21_projecte_1_social_gallery_m07_login.php?error=2&signinuser=" . $user);
+	
 	}
 //Si no está configurada la variable del formulario del login vuelve al index.php
 }else{
-	header("Location: ./login.php");
+	header("Location: ./index.php");
 }	
 ?>
