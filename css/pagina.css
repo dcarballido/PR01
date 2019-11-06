@@ -1,0 +1,36 @@
+body{
+	background-color: #2C2A2A;
+	font-family: Arial;
+}
+
+#main-container{
+	margin-left: 44%;
+	width: 600px;
+	margin-top: 3%;
+}
+
+table{
+	background-color: white;
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td{
+	padding: 20px;
+}
+
+thead{
+	background-color: #ED820A;
+	border-bottom: solid 5px #E6F307;
+	color: white;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
+tr:hover td{
+	background-color: #E8B25F;
+	color: white;
+}
