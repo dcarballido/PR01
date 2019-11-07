@@ -2,7 +2,7 @@
 
 session_start();
 $iduser = $_SESSION['id_user'];
-$name = $_SESSION['nom_us']." ".$_SESSION['cognom_us'];
+$name = $_SESSION['nom_us'];
 
 
 
@@ -11,6 +11,7 @@ $name = $_SESSION['nom_us']." ".$_SESSION['cognom_us'];
 <!DOCTYPE html>
 <html>
 <head>
+	  <link rel="stylesheet" type="text/css" href="estilo.css">
 	<title></title>
 </head>
 <body>
@@ -18,11 +19,10 @@ $name = $_SESSION['nom_us']." ".$_SESSION['cognom_us'];
 <div style="text-align: right;">
 		<?php
 		//Mantengo la sesión. Por ende puedo utilizar la variable $_SESSION anteriormente configurada
-		session_start();
 		if(isset($_SESSION['id_user'])){
 			echo "<a href='./logout.proc.php'>Cerrar sesión de ".$_SESSION['nom_us']."</a>&nbsp;&nbsp;";
 		}else{
-			header("Location: ./index.php");
+			//header("Location: ./index.php");
 		}
 
 		?>
@@ -46,7 +46,7 @@ if (!empty($result) && mysqli_num_rows($result)>0) {
 
 	while ($row = mysqli_fetch_array($result)) {
 			echo "<br>";
-			echo "<div style='background-color: yellow;'>";
+			echo "<form><div style='background-color:#ED820A;</form>;'>";
 			echo "<br> EL ID DE LA RESERVA ES: " .$row['id_reserva'] . "<br>";
 			echo "LA FECHA DE INICIO ES: ".$row['fecha_ini_res'] . "<br>";
 			echo "LA FECHA DE FIN ES: ".$row['Fecha_fin_res'] . "<br>";
@@ -54,6 +54,7 @@ if (!empty($result) && mysqli_num_rows($result)>0) {
 			echo "EL NOMBRE DEL USUARIO QUE HA RESERVADO ES: ".strtoupper($name) . "<br>";
 			echo "EL NOMBRE DE LA SALA ES: ".strtoupper($row['nom_sala']) . "<br>";
 			echo "</div>";
+			echo "<a href='./incidencias.php'><p>ABRIR INCIDENCIA</p></a>";
 			
 		}	
 
@@ -61,10 +62,6 @@ if (!empty($result) && mysqli_num_rows($result)>0) {
 
 ?>
 
-<!-- BOTON DE ABRIR INCIDENCIA -->
-
-<a href="./incidencias.php"><p>ABRIR INCIDENCIA</p></a>
-<!-- ------------------ -->
 
 
 </body>

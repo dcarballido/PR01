@@ -8,15 +8,16 @@ include "./db_connection.php";
 <head>
   <meta charset="utf-8">
   <title></title>
+  <link rel="stylesheet" type="text/css" href="estilo.css">
   <script src="../js/login.js"></script>
 </head>
 <body>
-  <div style="text-align: center; margin-top: 5%"><h1>Social Gallery</h1></div>
+  <div style="text-align: center; margin-top: 5%"></div>
   <div style="text-align: center; margin-top: 10%;">
     <!-- formulario de inicio de sesión -->
   <h1>Iniciar sesión</h1>
   <form method="post" action="./login.proc.php" onsubmit="first()">
-  <p>Recuerda, este formulario no acepta caracteres especiales!</p>
+  <h2>Recuerda, este formulario no acepta caracteres especiales!</h2>
     <?php
     echo "<input pattern='[A-Za-z0-9_-]{1,15}' type='text' name='user' placeholder='Inserta el usuario' id='user' value='".$_REQUEST['loginuser']."'><br/>
 ";
@@ -37,7 +38,7 @@ include "./db_connection.php";
   <!-- formulario de registro -->
   <h1>Registrarse</h1>
   <form method="post" action="./signin.proc.php" onsubmit="second()">
-  <p>Recuerda, este formulario no acepta caracteres especiales!</p>
+  <h2>Recuerda, este formulario no acepta caracteres especiales!</h2>
     <?php
     echo "<input pattern='[A-Za-z0-9_-]{1,15}' type='text' name='user' placeholder='Inserta el usuario' id='user' value='".$_REQUEST['signinuser']."'><br/>
 ";

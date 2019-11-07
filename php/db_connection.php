@@ -2,8 +2,8 @@
 //asignación de variables de conexion a phpMyAdmin
 //Raúl y Edgar, cambiar credenciales para conexión a db
 	$server = "localhost";
-	$user = "diego";
-	$password = "qweQWE123";
+	$user = "root";
+	$password = "";
 	$dbname = "bd_proyecto01";
 
 //creación de la conexión con db
