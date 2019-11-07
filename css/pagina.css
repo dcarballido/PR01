@@ -4,7 +4,6 @@ body{
 }
 
 #main-container{
-	margin-left: 44%;
 	width: 600px;
 	margin-top: 3%;
 }
@@ -14,6 +13,7 @@ table{
 	text-align: left;
 	border-collapse: collapse;
 	width: 100%;
+	margin-left: 95%;
 }
 
 th, td{
@@ -33,4 +33,20 @@ tr:nth-child(even){
 tr:hover td{
 	background-color: #E8B25F;
 	color: white;
+}
+
+#filtro{
+    width: 12%;
+    margin-top: -500px;
+    color: white;
+}
+
+#cajafiltro{
+	background-color: #E8B25F;
+	width: 12%;
+	margin-left: 100px;
+}
+
+select{
+	width: 150px;
 }
