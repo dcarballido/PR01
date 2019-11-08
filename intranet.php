@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Página de disponibilidad</title>
-	<link rel="stylesheet" type="text/css" href="\PROYECTOS-DAW2\PR01\css\pagina.css">
+	  <link rel="stylesheet" type="text/css" href="css/pagina.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400i&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
 </head>
@@ -22,7 +22,7 @@
 	</div> 
 <!-- ------------------ -->
 
-	<center><h1 style="color: white; background-color: #ED820A; width: 41%; border-radius: 10px;">PÁGINA DE DISPONIBILIDAD</h1></center>
+<center><h1 style="color: #E8B25F;">PÁGINA DE DISPONIBILIDAD</h1></center>
 <div id="main-container">
 
 		<table>
@@ -76,23 +76,33 @@ while ($row = mysqli_fetch_array($result_r)) {
 <div id="filtro">	
 			<h2 style="background-color: #ED820A; color: white; width: 833%; margin-bottom: 10px;">Filtros</h2>
 			
-			<form action="filtrar.php" method="post">
+<form action="filtrar.php" method="post">
 				<a><select name="salas">
 					<option value="">Salas</option>
-					<option value="sala polivalent">Sala Polivalent</option>
-					<option value="sala de yoga">Sala de yoga</option>
-					<option value="sala de reforç">Sala de reforç</option>
+					<?php 
+					$query_s2="SELECT * FROM tbl_salas";
+					$result_s2=mysqli_query($conn,$query_s2);
+					while ($row= mysqli_fetch_array($result_s2)) {
+						echo "<option value=".$row['nom_sala'].">".$row['nom_sala']."</option>";
+					}
+					
+					?>
 				</select>
 				</a>
 				<br><br>
 				<a><select name="recursos">Recursos:
 					<option value="">Recursos</option>
-					<option value="portatil_01">portatil_01</option>
-					<option value="portatil_02">portatil_02</option>
-					<option value="proyector_01">proyector_01</option>
-					<option value="proyector_02">proyector_02</option>
+						<?php 
+					$query_r2="SELECT * FROM tbl_recursos";
+					$result_r2=mysqli_query($conn,$query_r2);
+					while ($row= mysqli_fetch_array($result_r2)) {
+						echo "<option value=".$row['nom_recurs'].">".$row['nom_recurs']."</option>";
+					}
+					
+					?>
 				</select>
 				</a>
+
 				
 				<br><br>
 				<input style="margin-left: 8px; width: 740%;" type="submit" value="Filtrar" /><br><br>

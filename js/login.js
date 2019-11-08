@@ -18,8 +18,8 @@ return true;
 
 }
 function second(){
-var tit = document.getElementById('titulo').value;
-var arc = document.getElementById('archivo').value;
+var tit = document.getElementById('user').value;
+var arc = document.getElementById('password').value;
 
 if (arc == '') {
 alert('ARCHIVO esta vacio!');

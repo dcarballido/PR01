@@ -1,21 +1,28 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:8889
--- Tiempo de generación: 07-11-2019 a las 14:47:47
--- Versión del servidor: 5.7.26
--- Versión de PHP: 7.3.8
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 08-11-2019 a las 17:51:10
+-- Versión del servidor: 8.0.13
+-- Versión de PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `bd_proyecto01`
 --
 CREATE DATABASE `bd_proyecto01`;
-USE `bd_proyecto01`;
-
+USE bd_proyecto01;
 -- --------------------------------------------------------
 
 --
@@ -26,8 +33,8 @@ CREATE TABLE `tbl_incidencia` (
   `id_in` int(11) NOT NULL,
   `desc_in` text NOT NULL,
   `fecha_in` date NOT NULL,
-  `id_reserva` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_reserva` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Volcado de datos para la tabla `tbl_incidencia`
@@ -47,18 +54,22 @@ CREATE TABLE `tbl_recursos` (
   `id_recurs` int(11) NOT NULL,
   `nom_recurs` varchar(25) NOT NULL,
   `tipo_recurs` enum('MATERIAL INFORMATICO','MATERIAL DEPORTIVO','MATERIAL EDUCATIVO','MATERIAL DE SOPORTE VISUAL') NOT NULL,
-  `desc_recurs` text NOT NULL
+  `desc_recurs` text NOT NULL,
+  `disponibilidad` enum('DISPONIBLE','OCUPADO') NOT NULL DEFAULT 'DISPONIBLE'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_recursos`
 --
 
-INSERT INTO `tbl_recursos` (`id_recurs`, `nom_recurs`, `tipo_recurs`, `desc_recurs`) VALUES
-(1, 'portatil_01', 'MATERIAL INFORMATICO', ''),
-(2, 'portatil_02', 'MATERIAL INFORMATICO', ''),
-(3, 'proyector_01', 'MATERIAL INFORMATICO', ''),
-(4, 'proyector_02', 'MATERIAL INFORMATICO', '');
+INSERT INTO `tbl_recursos` (`id_recurs`, `nom_recurs`, `tipo_recurs`, `desc_recurs`, `disponibilidad`) VALUES
+(1, 'portatil_01', 'MATERIAL INFORMATICO', '', 'OCUPADO'),
+(2, 'portatil_02', 'MATERIAL INFORMATICO', '', 'OCUPADO'),
+(3, 'proyector_01', 'MATERIAL DE SOPORTE VISUAL', '', 'OCUPADO'),
+(4, 'proyector_02', 'MATERIAL DE SOPORTE VISUAL', '', 'OCUPADO'),
+(5, 'portatil_03', 'MATERIAL INFORMATICO', '', 'DISPONIBLE'),
+(6, 'mobil_01', 'MATERIAL INFORMATICO', '', 'DISPONIBLE'),
+(7, 'mobil_02', 'MATERIAL INFORMATICO', '', 'DISPONIBLE');
 
 -- --------------------------------------------------------
 
@@ -69,23 +80,24 @@ INSERT INTO `tbl_recursos` (`id_recurs`, `nom_recurs`, `tipo_recurs`, `desc_recu
 CREATE TABLE `tbl_reserva` (
   `id_reserva` int(11) NOT NULL,
   `fecha_ini_res` date NOT NULL,
-  `Fecha_fin_res` date NOT NULL,
+  `fecha_fin_res` date NOT NULL,
   `id_recurs` int(11) DEFAULT NULL,
   `id_user` int(11) NOT NULL,
-  `id_sala` int(11) DEFAULT NULL,
-  `disponibilidad` int(1) NOT NULL
+  `id_sala` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_reserva`
 --
 
-INSERT INTO `tbl_reserva` (`id_reserva`, `fecha_ini_res`, `Fecha_fin_res`, `id_recurs`, `id_user`, `id_sala`, `disponibilidad`) VALUES
-(1, '2019-10-30', '2019-11-08', NULL, 1, 1, 0),
-(2, '2019-10-15', '2019-11-04', NULL, 2, 7, 0),
-(3, '2019-11-01', '2019-11-05', 1, 4, NULL, 0),
-(4, '2019-11-04', '2019-11-07', 3, 2, NULL, 0),
-(5, '2019-10-15', '2019-11-27', NULL, 4, 7, 0);
+INSERT INTO `tbl_reserva` (`id_reserva`, `fecha_ini_res`, `fecha_fin_res`, `id_recurs`, `id_user`, `id_sala`) VALUES
+(1, '2019-10-30', '2019-11-08', NULL, 1, 1),
+(2, '2019-10-15', '2019-11-04', NULL, 2, 7),
+(3, '2019-11-01', '2019-11-05', 1, 4, NULL),
+(4, '2019-11-04', '2019-11-07', 3, 2, NULL),
+(5, '2019-10-15', '2019-11-27', NULL, 4, 7),
+(6, '2019-11-09', '2019-11-10', 1, 4, 1),
+(7, '2019-11-08', '2019-11-09', 2, 2, 7);
 
 -- --------------------------------------------------------
 
@@ -98,17 +110,27 @@ CREATE TABLE `tbl_salas` (
   `nom_sala` varchar(25) NOT NULL,
   `tlf_sala` char(9) NOT NULL,
   `edificio_sala` varchar(40) NOT NULL,
-  `desc_sala` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `desc_sala` text NOT NULL,
+  `disponibilidad` enum('DISPONIBLE','OCUPADA') NOT NULL DEFAULT 'DISPONIBLE'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Volcado de datos para la tabla `tbl_salas`
 --
 
-INSERT INTO `tbl_salas` (`id_sala`, `nom_sala`, `tlf_sala`, `edificio_sala`, `desc_sala`) VALUES
-(1, 'sala polivalent', '601301001', 'edifici 1', 'sala polivalent d\'us comu'),
-(3, 'sala de yoga', '601301002', 'edifici 2', 'sala per a fer classes de yoga'),
-(7, 'sala de reforç', '601301003', 'edifici 3', 'sala per a classes de reforç a alumnes');
+INSERT INTO `tbl_salas` (`id_sala`, `nom_sala`, `tlf_sala`, `edificio_sala`, `desc_sala`, `disponibilidad`) VALUES
+(1, 'sala_polivalent', '601301001', 'edifici 1', 'sala polivalent d\'us comu', 'OCUPADA'),
+(3, 'sala_ioga', '601301002', 'edifici 2', 'sala per a fer classes de ioga', 'OCUPADA'),
+(7, 'sala_reforç', '601301003', 'edifici 3', 'sala per a classes de reforç a alumnes', 'OCUPADA'),
+(9, 'sala_ball', '672635198', 'edifici 3', 'Sala per a classes de ball', 'DISPONIBLE'),
+(10, 'sala_presentacions', '652871925', 'edifici 1', 'Sala per a fer presentacions', 'DISPONIBLE'),
+(11, 'sala_informatica01', '625839156', 'edifici 2', 'Sala d\'us comú d\'informàtica', 'DISPONIBLE'),
+(12, 'sala_informatica02', '672541789', 'edifici 2', 'Sala per a classes d\'informàtica', 'DISPONIBLE'),
+(13, 'despatx_01', '635287156', 'edifici 3', 'Despatx per a reunions', 'DISPONIBLE'),
+(14, 'despatx_02', '635287156', 'edifici 3', 'Despatx per a reunions', 'DISPONIBLE'),
+(15, 'salo_de_actes', '625189352', 'edifici 1', '', 'DISPONIBLE'),
+(16, 'taller_cuina', '642517892', 'edifici 1', 'Taller per a classes de cuina', 'DISPONIBLE'),
+(17, 'Sala_de_reunions', '642517826', 'edifici 3', '', 'DISPONIBLE');
 
 -- --------------------------------------------------------
 
@@ -189,13 +211,19 @@ ALTER TABLE `tbl_incidencia`
 -- AUTO_INCREMENT de la tabla `tbl_recursos`
 --
 ALTER TABLE `tbl_recursos`
-  MODIFY `id_recurs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_recurs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_reserva`
+--
+ALTER TABLE `tbl_reserva`
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_salas`
 --
 ALTER TABLE `tbl_salas`
-  MODIFY `id_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuario`
@@ -220,3 +248,8 @@ ALTER TABLE `tbl_reserva`
   ADD CONSTRAINT `fk_id_recurs` FOREIGN KEY (`id_recurs`) REFERENCES `tbl_recursos` (`id_recurs`),
   ADD CONSTRAINT `fk_id_sala` FOREIGN KEY (`id_sala`) REFERENCES `tbl_salas` (`id_sala`),
   ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`id_user`) REFERENCES `tbl_usuario` (`id_user`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

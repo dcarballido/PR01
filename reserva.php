@@ -11,14 +11,14 @@ $name = $_SESSION['nom_us']." ".$_SESSION['cognom_us'];
 <head>
 	<title></title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
 </head>
 <body>
+
 <!-- BOTON DE CERRAR SESION DE USUARIO -->
 <div style="text-align: right;">
 		<?php
 		//Mantengo la sesión. Por ende puedo utilizar la variable $_SESSION anteriormente configurada
-		session_start();
 		if(isset($_SESSION['id_user'])){
 			echo "<a href='./proc/logout.proc.php'>Cerrar sesión de ".$_SESSION['nom_us']."</a>&nbsp;&nbsp;";
 		}else{
@@ -26,12 +26,12 @@ $name = $_SESSION['nom_us']." ".$_SESSION['cognom_us'];
 		}
 
 		?>
-	</div> 
+	</div> 	<h1>RESERVAS</h1>
 <!-- ------------------ -->
 <div>
 	<!-- FORMULARIO PARA INSERTAR LAS RESERVAS DE LOS USUARIOS -->
 	<form action="./insert/insert_reserva.php" method="POST">
-		ELIGE LA SALA:<br><select name="salas">
+		ELIGE LA SALA:<br><select background:#ededed name="salas">
 		<!-- input donde se muestran las salas desde bbdd -->		
 			<option value="">Salas</option>
 			<?php

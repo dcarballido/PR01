@@ -3,7 +3,7 @@
 //Raúl y Edgar, cambiar credenciales para conexión a db
 	$server = "localhost";
 	$user = "root";
-	$password = "";
+	$password = "Orisuper18";
 	$dbname = "bd_proyecto01";
 
 //creación de la conexión con db

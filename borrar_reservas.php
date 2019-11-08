@@ -20,7 +20,6 @@ $name = $_SESSION['nom_us']." ".$_SESSION['cognom_us'];
 <div style="text-align: center;">
 
 <!-- MENSAJE BETA -->
-<h1 style="color: red">¡¡¡¡ESTA PÁGINA NO SERÁ FUNCIONAL HASTA LA SIGUIENTE ACTUALIZACIÓN!!!!</h1>
 <!-- ------------ -->
 <!-- SALAS -->
 

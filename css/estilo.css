@@ -1,4 +1,4 @@
-* {
+ *{
 	padding: 0;
 	margin: 0;
 	font-family: century gothic;
@@ -31,6 +31,17 @@ h2 {
 	padding: 8px;
 	color: #ED820A
 }
+
+select {
+	background: white;
+	width: calc(100% - 20px);
+	padding: 9px;
+	margin: auto;
+	margin-top: 12px;
+	font-size: 16px;
+}
+
+
 input {
 	background: white;
 	width: calc(100% - 20px);
@@ -72,4 +83,9 @@ input[type='submit']{
 	margin: 0 10%;
 	margin-top: 22px;
 	border: none;
+}
+
+a{
+	text-decoration: none;
+	color: white;
 }
